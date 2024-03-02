@@ -44,27 +44,22 @@ return user.getId();*/
           int count=0;
           User user = userRepository.findById(userId).get();
           for(WebSeries webSeries : webSeriesList) {
-              if (user.getAge() >= webSeries.getAgeLimit())
-              {
-                  if(user.getSubscription().getSubscriptionType() == SubscriptionType.ELITE)
-                  {
+              if (user.getAge() >= webSeries.getAgeLimit()) {
+                  if (user.getSubscription().getSubscriptionType() == SubscriptionType.ELITE) {
                       count++;
-                  }else if(user.getSubscription().getSubscriptionType() == SubscriptionType.PRO && (
-                          webSeries.getSubscriptionType()==SubscriptionType.PRO ||
-                                  webSeries.getSubscriptionType()==SubscriptionType.BASIC
-                          ))
-                  {
+                  } else if (user.getSubscription().getSubscriptionType() == SubscriptionType.PRO && (
+                          webSeries.getSubscriptionType() == SubscriptionType.PRO ||
+                                  webSeries.getSubscriptionType() == SubscriptionType.BASIC
+                  )) {
                       count++;
-                  }else if(user.getSubscription().getSubscriptionType() == SubscriptionType.BASIC &&
-                  webSeries.getSubscriptionType() == SubscriptionType.BASIC)
-                  {
+                  } else if (user.getSubscription().getSubscriptionType() == SubscriptionType.BASIC &&
+                          webSeries.getSubscriptionType() == SubscriptionType.BASIC) {
                       count++;
                   }
               }
-             return count;
           }
-        return null;
-    }
+             return count;
 
+          }
 
 }
